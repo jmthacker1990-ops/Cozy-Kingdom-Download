@@ -1,15 +1,11 @@
-# Cozy Kingdoms downloads
+# Cozy Kingdoms Downloads
 
-Playable prerelease **v0.18.0**. This repository contains download instructions and releases only.
+Latest playtest: [v0.18.1](https://github.com/jmthacker1990-ops/Cozy-Kingdom-Download/releases/tag/v0.18.1).
 
-- [Android APK](https://github.com/jmthacker1990-ops/Cozy-Kingdom-Download/releases/download/v0.18.0/CozyKingdoms-v0.18.0-debug.apk)
-- [Windows client ZIP](https://github.com/jmthacker1990-ops/Cozy-Kingdom-Download/releases/download/v0.18.0/CozyKingdoms-v0.18.0-Windows-Client.zip)
-- [Windows dedicated server ZIP](https://github.com/jmthacker1990-ops/Cozy-Kingdom-Download/releases/download/v0.18.0/CozyKingdoms-v0.18.0-Windows-Dedicated-Server.zip)
-
-# Cozy Kingdoms v0.18.0 playtest
+# Cozy Kingdoms v0.18.1 playtest
 
 Windows client, Windows dedicated server and Android use multiplayer **protocol 8**.
-Use matching v0.18.0 packages. Windows requires x86-64; Android requires ARM64.
+Use matching v0.18.1 packages. Windows requires x86-64; Android requires ARM64.
 This is a public prerelease; offline play remains available without a server.
 
 ## Install and play
@@ -18,9 +14,9 @@ Windows: extract the entire client ZIP and run `CozyKingdoms.exe`. Keep the PCK
 beside the executable. Choose **Play Offline** for a local game, or **Multiplayer**
 to connect to a dedicated server. Windows binaries are unsigned.
 
-Android: install `CozyKingdoms-v0.18.0-debug.apk`, allowing installation from your
+Android: install `CozyKingdoms-v0.18.1-debug.apk`, allowing installation from your
 download app if prompted. Package identity remains `com.jmthacker1990.cozykingdoms`,
-version code 180. The APK uses the same debug signing certificate as the previous
+version code 181. The APK uses the same debug signing certificate as the previous
 main-game APK, allowing an in-place update without clearing app data. Separately
 labeled old multiplayer test apps are different packages. Use landscape touch
 controls. Reconnect after app suspension. This build needs physical-device testing.
@@ -34,14 +30,13 @@ Allow inbound UDP 17174 in Windows Firewall. Run one server per save file and po
 Optional arguments follow the script, e.g. `Start-Server.cmd --port=17175` or
 `Start-Server.cmd --save=C:/CozyWorlds/my-war.ckworld`.
 
-The launcher uses a new `v0.18.0.ckworld` under
+The launcher deliberately retains `v0.18.0.ckworld` under
 `%APPDATA%/Godot/app_userdata/Cozy Kingdoms/multiplayer/worlds/`.
-**A fresh war is required when upgrading from v0.17.x** because the authored world
-entity layout changed. No automatic old-world migration is supplied. Old saves
-are left untouched; retain the previous build to resume them. Incompatible saves
-are rejected instead of silently overwritten. Saves created with v0.18.0 support
-restart and reconnect. Back up `.ckworld` and `.bak` files with the server stopped.
-Closing the console can lose progress since the last autosave; downtime does not
+Stop the old server and back up its `.ckworld` and `.bak` before upgrading.
+Keep the previous build for rollback. Packaging does not touch live saves.
+Existing fixed-world saves use the compatibility path; fresh worlds use seeded
+procedural terrain. Do not run two servers against the same save.
+Closing the console may lose progress since the last autosave. Downtime does not
 advance the simulation. Direct EXE launches without `--save` use `default.ckworld`.
 
 ## Connect to multiplayer
@@ -59,10 +54,11 @@ token. There is no account recovery. Eight players may connect, with sixteen
 retained identities per world. For a second client on one PC, use
 `CozyKingdoms.exe -- --connect=127.0.0.1 --identity-file=user://multiplayer/second.cfg`.
 
-King defeat stops new knight and archer spawns. After five seconds, a victory
-popup offers **Back to Game** or **Back to Main Menu**. The completed war remains
-playable; it does not automatically reset. Start a server with a different save
-path for a fresh war. Leaving a client does not stop the server.
+King defeat stops new army spawns and announces victory. The default server
+intermission for procedural worlds is 60 seconds, then a new war starts without disconnecting clients.
+Older fixed-world saves retain the completed war instead of automatically resetting.
+World state is reset for the new war while player identity remains persistent.
+Leaving a client does not stop the server.
 
 ## Changes and limitations
 
@@ -78,3 +74,7 @@ other platforms use a font fallback. No encrypted transport, prediction/lag
 compensation or interest management is supplied. WAN latency, long-running servers
 and physical Android performance remain unverified. This is a playtest, not a
 production-hardened hosting service.
+
+## v0.18.1 known issues
+
+Severe 130-NPC slowdown remains (about 7 FPS in the measured Windows case); 28/70 gate/ranged navigation checks fail on both baseline and current code; multiplayer snapshot delivery can intermittently time out despite a passing repeat. See release notes. Physical Android and WAN validation remain outstanding.
