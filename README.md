@@ -78,3 +78,9 @@ production-hardened hosting service.
 ## v0.18.1 known issues
 
 Severe 130-NPC slowdown remains (about 7 FPS in the measured Windows case); 28/70 gate/ranged navigation checks fail on both baseline and current code; multiplayer snapshot delivery can intermittently time out despite a passing repeat. See release notes. Physical Android and WAN validation remain outstanding.
+
+## Current development status — October 31, 2026
+
+The downloads linked below remain v0.18.1 (protocol 8). New development sources use protocol 9 and have not been packaged into a new tested release. Use matching client and server packages; do not mix these versions.
+
+The planned multiplayer setup is one owner-operated server named **Little Wars**. Updated clients will offer Little Wars, This PC (host), and Other address. Players will not need to configure their own routers. The host still needs a reachable internet connection, inbound UDP 17174 and router forwarding. There is no active join-code or relay service, and internet connectivity has not yet been verified. Existing downloads retain the connection instructions below until a matching new release is published.
