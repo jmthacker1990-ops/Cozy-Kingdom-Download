@@ -1,5 +1,21 @@
 # Cozy Kingdoms Downloads
 
+## Android update — protocol 9
+
+**[Download Android APK (v0.18.2, protocol 9)](https://github.com/jmthacker1990-ops/Cozy-Kingdom-Download/releases/download/playtest-20261031-protocol9/CozyKingdoms-Android-v0.18.2-protocol9-debug.apk)**  
+[Android validation report](https://github.com/jmthacker1990-ops/Cozy-Kingdom-Download/releases/download/playtest-20261031-protocol9/ANDROID_VALIDATION.json) · [Android SHA256 checksum](https://github.com/jmthacker1990-ops/Cozy-Kingdom-Download/releases/download/playtest-20261031-protocol9/ANDROID_SHA256SUMS.txt)
+
+For ARM64 devices running Android 7.0 or later. This APK matches the new protocol 9 server.
+Install it **over the existing main-game app**. **Do not uninstall or clear app data.**
+The package ID and signing certificate are unchanged; version code increases from 181 to 182.
+Both old and new signatures were cryptographically verified, preserving the Android in-place
+update path. No device installation or save migration was performed here.
+
+Package/signature/alignment checks passed, and all 225 game scripts match the tested
+protocol 9 Windows client. **Physical-device launch, touch controls and Android-to-server
+connection/performance remain unverified.** A themed-launcher-icon template warning remains.
+This is a prerelease. Keep save backups and report device-specific problems.
+
 ## New Windows playtest — protocol 9
 
 **[Download Windows client](https://github.com/jmthacker1990-ops/Cozy-Kingdom-Download/releases/download/playtest-20261031-protocol9/CozyKingdoms-Windows-Client-protocol9-20261031.zip)**  
@@ -42,7 +58,7 @@ ZIPs were read-back checked and GitHub asset digests matched local SHA256 hashes
 
 This is a **prerelease playtest**. Full-size-world performance and the earlier roughly
 4 FPS online report are not yet certified as resolved. WAN reachability, long wars,
-multiple remote clients, restart/save parity and Android require further validation.
+multiple remote clients, restart/save parity and physical Android require further validation.
 Read the included `KNOWN_ISSUES.txt` and `README.txt`.
 
 ## Older Windows and Android downloads — protocol 8
