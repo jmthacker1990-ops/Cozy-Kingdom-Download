@@ -1,70 +1,50 @@
 # Cozy Kingdoms Downloads
 
-## Android update — protocol 9
+## Current playtest: v0.18.3 — protocol 10
 
-**[Download Android APK (v0.18.2, protocol 9)](https://github.com/jmthacker1990-ops/Cozy-Kingdom-Download/releases/download/playtest-20261031-protocol9/CozyKingdoms-Android-v0.18.2-protocol9-debug.apk)**  
-[Android validation report](https://github.com/jmthacker1990-ops/Cozy-Kingdom-Download/releases/download/playtest-20261031-protocol9/ANDROID_VALIDATION.json) · [Android SHA256 checksum](https://github.com/jmthacker1990-ops/Cozy-Kingdom-Download/releases/download/playtest-20261031-protocol9/ANDROID_SHA256SUMS.txt)
+**[Download Windows client](https://github.com/jmthacker1990-ops/Cozy-Kingdom-Download/releases/download/playtest-20261101-protocol10/CozyKingdoms-v0.18.3-protocol10-Windows-Client.zip)**
 
-For ARM64 devices running Android 7.0 or later. This APK matches the new protocol 9 server.
-Install it **over the existing main-game app**. **Do not uninstall or clear app data.**
-The package ID and signing certificate are unchanged; version code increases from 181 to 182.
-Both old and new signatures were cryptographically verified, preserving the Android in-place
-update path. No device installation or save migration was performed here.
+**[Download Windows dedicated server](https://github.com/jmthacker1990-ops/Cozy-Kingdom-Download/releases/download/playtest-20261101-protocol10/CozyKingdoms-v0.18.3-protocol10-Windows-Server.zip)**
 
-Package/signature/alignment checks passed, and all 225 game scripts match the tested
-protocol 9 Windows client. **Physical-device launch, touch controls and Android-to-server
-connection/performance remain unverified.** A themed-launcher-icon template warning remains.
-This is a prerelease. Keep save backups and report device-specific problems.
+**[Download Android APK](https://github.com/jmthacker1990-ops/Cozy-Kingdom-Download/releases/download/playtest-20261101-protocol10/CozyKingdoms-v0.18.3-protocol10-Android-debug.apk)**
 
-## New Windows playtest — protocol 9
+[Release notes and all assets](https://github.com/jmthacker1990-ops/Cozy-Kingdom-Download/releases/tag/playtest-20261101-protocol10) · [SHA256 checksums](https://github.com/jmthacker1990-ops/Cozy-Kingdom-Download/releases/download/playtest-20261101-protocol10/SHA256SUMS.txt) · [Validation report](https://github.com/jmthacker1990-ops/Cozy-Kingdom-Download/releases/download/playtest-20261101-protocol10/VALIDATION.json)
 
-**[Download Windows client](https://github.com/jmthacker1990-ops/Cozy-Kingdom-Download/releases/download/playtest-20261031-protocol9/CozyKingdoms-Windows-Client-protocol9-20261031.zip)**  
-**[Download Windows dedicated server](https://github.com/jmthacker1990-ops/Cozy-Kingdom-Download/releases/download/playtest-20261031-protocol9/CozyKingdoms-Windows-Server-protocol9-20261031.zip)**  
-[SHA256 checksums](https://github.com/jmthacker1990-ops/Cozy-Kingdom-Download/releases/download/playtest-20261031-protocol9/SHA256SUMS.txt) · [Release notes and assets](https://github.com/jmthacker1990-ops/Cozy-Kingdom-Download/releases/tag/playtest-20261031-protocol9)
+Use the client and server from this same release. Older protocol 8/9 packages cannot connect to this protocol 10 server.
 
-These are the newer development packages labeled **playtest-20261031-protocol9**.
-Their internal game version still reads 0.18.1; **protocol 9** identifies this update.
-Use the client and server from this same release. Old protocol 8 packages cannot connect.
+### What is new
 
-### Play
+- Player-built dirt and stone roads, builder assistance, connected biome artwork and movement bonuses.
+- Updated inventory/map/building artwork, loading screens, castle waypoints, compass/clock layout and build menus.
+- New worlds are 110×79, about half the former area, with 25% forage and double stone targets. Existing saved worlds keep their recorded size/profile.
+- Loose equipment expires after 30 seconds; held and stored equipment is preserved.
+- Consistent menu backgrounds/music, a shuffled gameplay playlist with new song starts every five active gameplay minutes, and separate **Music** and **Effects** volume sliders.
+- Online bow, arrow-hit, melee, bomb, door, menu, fishing, low-health and respawn sounds; corrected facing and northward aiming.
 
-Extract the complete client ZIP and run `CozyKingdoms.exe`; keep its PCK beside it.
-For multiplayer, choose **Little Wars**, enter your name/faction and connect.
-Players do not configure routers or run the server. Offline play is also available.
+### Windows: play or host
 
-### Host Little Wars
+Extract the complete client ZIP and run `CozyKingdoms.exe`. Keep its PCK beside it. Offline play is available without a server.
 
-Extract the server ZIP and double-click `server.bat`. Keep its EXE, console companion
-and PCK together. Leave the server running. On that same PC, open the client and
-choose **This PC (host)**; on another LAN device, **Other address** can use the host's LAN IPv4.
+For online play select **Multiplayer**, then **Little Wars** when its configured host is available. Enter your name/faction and connect. On the server PC choose **This PC (host)**; for another host/LAN address use **Other address**.
 
-Remote players still need the host to allow and forward **UDP 17174** to the server PC.
-No router/firewall changes are performed automatically. The Little Wars endpoint is
-configured in this client, but internet reachability has not been verified. No join-code
-or relay service is active.
+To host, extract the complete server ZIP and run **server.bat**. Keep the EXEs, console companion and PCK together. Leave its console open. The host still needs inbound **UDP 17174** firewall/router routing for internet access. No relay/join-code service or automatic router/firewall changes are included.
 
-Back up existing saves and retain older packages before upgrading. This launcher uses
-the separate `friends_family_playtest.ckworld` under
-`%APPDATA%/Godot/app_userdata/Cozy Kingdoms/multiplayer/worlds/`.
-Never run two servers against one save. It autosaves every 30 seconds; abrupt closure
-may lose progress since the last completed save. Windows x86-64 binaries are unsigned.
+Stop the old server normally and back up its `.ckworld` and `.bak` before upgrading. This update does **not** delete or reset saves. The launcher retains `friends_family_playtest.ckworld` under `%APPDATA%/Godot/app_userdata/Cozy Kingdoms/multiplayer/worlds/`. Keep custom save/port settings if you use them. Never run two servers against the same save. Autosaves occur every 30 seconds; abrupt closure may lose progress since the last save. Windows x86-64 binaries are unsigned.
 
-### What passed and what remains open
+### Android: update without clearing saves
 
-Guarded checks passed for the exported-template menu, bounded offline gameplay and
-matching client/server ENet connection, initial transfer, movement, continued snapshots
-and server saving. A short online sample ran around **60 FPS in a 40×32 test world**.
-ZIPs were read-back checked and GitHub asset digests matched local SHA256 hashes.
+Install the new APK **over the existing main-game app**. **Do not uninstall or clear app data.**
 
-This is a **prerelease playtest**. Full-size-world performance and the earlier roughly
-4 FPS online report are not yet certified as resolved. WAN reachability, long wars,
-multiple remote clients, restart/save parity and physical Android require further validation.
-Read the included `KNOWN_ISSUES.txt` and `README.txt`.
+The package remains `com.jmthacker1990.cozykingdoms`; versionCode increases to **183** and versionName is **0.18.3-protocol10**. The **same existing signing key/certificate** is preserved and both APK signatures were verified. This preserves the Android in-place update path. Separately named old multiplayer-test apps use different package IDs.
 
-## Older Windows and Android downloads — protocol 8
+The APK is ARM64. Package/version, signature, ZIP integrity and 16KiB alignment passed; all **239 shared game scripts** match the tested Windows client/server. No physical Android device was connected, so a real installation, touch controls, phone audio/performance and Android-to-server connection have **not** been tested here.
 
-The [v0.18.1 release](https://github.com/jmthacker1990-ops/Cozy-Kingdom-Download/releases/tag/v0.18.1)
-remains available for rollback and its existing Android APK.
-**That Android APK uses protocol 8 and cannot join the new protocol 9 server.**
-Keep matching old client/server packages together when using an old world/build.
-The older release notes retain their known performance and navigation limitations.
+### What was tested
+
+The actual exported Windows client/server passed loopback ENet connection, initial world sync, movement/UI and server checkpoint saving. **18 online audio checks** passed, including captured non-silent mixed audio for the expected cues. The exported main menu and bounded offline gameplay also passed. Uploads are checked against GitHub's SHA256 asset digests.
+
+This is a **prerelease playtest**. The short online sample ran about **58.6 FPS in an isolated 40×32 world with at most six soldiers**. It does not certify full-world/long-war performance or internet reachability. Physical Android and WAN testing remain unverified. Keep backups and use trusted playtesters.
+
+### Previous releases
+
+[Protocol 9 playtest](https://github.com/jmthacker1990-ops/Cozy-Kingdom-Download/releases/tag/playtest-20261031-protocol9) and [v0.18.1 / protocol 8](https://github.com/jmthacker1990-ops/Cozy-Kingdom-Download/releases/tag/v0.18.1) remain available for rollback. Keep matching versions together.
