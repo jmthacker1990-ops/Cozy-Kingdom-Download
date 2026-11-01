@@ -84,3 +84,7 @@ Severe 130-NPC slowdown remains (about 7 FPS in the measured Windows case); 28/7
 The downloads linked below remain v0.18.1 (protocol 8). New development sources use protocol 9 and have not been packaged into a new tested release. Use matching client and server packages; do not mix these versions.
 
 The planned multiplayer setup is one owner-operated server named **Little Wars**. Updated clients will offer Little Wars, This PC (host), and Other address. Players will not need to configure their own routers. The host still needs a reachable internet connection, inbound UDP 17174 and router forwarding. There is no active join-code or relay service, and internet connectivity has not yet been verified. Existing downloads retain the connection instructions below until a matching new release is published.
+
+## Latest update attempt
+
+The private development source was updated on October 31. **New Windows client and server downloads are still blocked, not released.** A pre-export safety-runner validation failed its process-count check before any Godot export. No unvalidated binaries were substituted for the existing downloads. The approximately 4 FPS online report remains unresolved. The v0.18.1 links above still point to the older protocol 8 packages; the Little Wars menu and current protocol 9 source are not included in those downloads.
